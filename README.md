@@ -1,1 +1,1 @@
-# bisection-method-application
+# Bisection Method Application
