@@ -45,5 +45,6 @@ class Window(QWidget):
         self.setLayout(layout)
 
     def function(self):
-        method = Method(float(self.density_edit.text()), float(self.x_edit.text()), float(self.error_edit.text()))
+        method = Method(float(self.x_edit.text()), float(self.density_edit.text()), float(self.y_edit.text()),
+                        float(self.error_edit.text()))
         method.main_function(self.response_value)
