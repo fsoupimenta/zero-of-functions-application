@@ -1,8 +1,7 @@
-from PyQt5 import QtCore
-from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import *
 
 from domain.method import Method
+from view.results import Results
 
 
 class Window(QWidget):
@@ -21,16 +20,16 @@ class Window(QWidget):
         self.response_value.setDisabled(True)
 
         self.start_button = QPushButton("Start")
+        self.results_button = QPushButton("Show Results")
 
-        self.density_edit.setMaximumSize(100, 50)
-        self.x_edit.setMaximumSize(100, 50)
-        self.y_edit.setMaximumSize(100, 50)
-        self.error_edit.setMaximumSize(100, 50)
+        self.results = None
 
         self.start_button.clicked.connect(self.function)
+        self.results_button.clicked.connect(self.show_results)
 
         layout = QGridLayout()
-        layout.addWidget(self.response_value, 0, 0)
+        layout.addWidget(QLabel("Tension approximately: "), 0, 0)
+        layout.addWidget(self.response_value, 0, 1)
         layout.addWidget(QLabel("Insert a density value"), 1, 0)
         layout.addWidget(self.density_edit, 1, 1)
         layout.addWidget(QLabel("Insert a x value"), 2, 0)
@@ -41,9 +40,8 @@ class Window(QWidget):
         layout.addWidget(self.error_edit, 4, 1)
         layout.addWidget(QLabel("Insert an interval"), 5, 0)
         layout.addWidget(self.interval_edit, 5, 1)
-        layout.addWidget(self.start_button, 6, 1)
-
-        print(self.density_edit.text())
+        layout.addWidget(self.start_button, 6, 0)
+        layout.addWidget(self.results_button, 6, 1)
 
         self.setLayout(layout)
 
@@ -51,3 +49,7 @@ class Window(QWidget):
         method = Method(float(self.x_edit.text()), float(self.density_edit.text()), float(self.y_edit.text()),
                         float(self.error_edit.text()), float(self.interval_edit.text()))
         method.main_function(self.response_value)
+
+    def show_results(self):
+        self.results = Results()
+        self.results.show()
