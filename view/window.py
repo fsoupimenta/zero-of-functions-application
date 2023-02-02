@@ -16,6 +16,7 @@ class Window(QWidget):
         self.x_edit = QLineEdit()
         self.y_edit = QLineEdit()
         self.error_edit = QLineEdit()
+        self.interval_edit = QLineEdit()
         self.response_value = QLineEdit()
         self.response_value.setDisabled(True)
 
@@ -38,7 +39,9 @@ class Window(QWidget):
         layout.addWidget(self.y_edit, 3, 1)
         layout.addWidget(QLabel("Insert an error value"), 4, 0)
         layout.addWidget(self.error_edit, 4, 1)
-        layout.addWidget(self.start_button, 5, 1)
+        layout.addWidget(QLabel("Insert an interval"), 5, 0)
+        layout.addWidget(self.interval_edit, 5, 1)
+        layout.addWidget(self.start_button, 6, 1)
 
         print(self.density_edit.text())
 
@@ -46,5 +49,5 @@ class Window(QWidget):
 
     def function(self):
         method = Method(float(self.x_edit.text()), float(self.density_edit.text()), float(self.y_edit.text()),
-                        float(self.error_edit.text()))
+                        float(self.error_edit.text()), float(self.interval_edit.text()))
         method.main_function(self.response_value)
