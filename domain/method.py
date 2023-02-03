@@ -6,13 +6,15 @@ from store.store import store
 
 class Method:
     def __init__(self, x, p, y, error, interval):
-        self.value_a = 100
-        self.value_b = 100
+        self.value_a = 0
+        self.value_b = 0
         self.error = error
         self.x = x
         self.density = p
         self.y = y
         self.interval = interval
+
+        self.set_initial_interval()
 
         self.value_c = self.calculate_c()
         self.list_values_a = [self.value_a]
@@ -22,8 +24,6 @@ class Method:
         self.list_values_image_b = [self.equation(self.value_b)]
         self.list_values_image_c = [self.equation(self.value_c)]
 
-        self.set_initial_interval()
-
     def main_function(self, lineEdit):
         while self.value_b - self.value_a > self.error:
             if self.equation(self.value_a) * self.equation(self.value_c) > 0:
@@ -32,9 +32,9 @@ class Method:
                 self.value_b = self.value_c
             self.value_c = self.calculate_c()
             self.att_lists()
+            lineEdit.setText(str(self.value_c))
 
         self.att_store()
-        lineEdit.setText(str(self.equation(self.value_c)))
 
     def set_initial_interval(self):
         self.value_a = self.interval

@@ -9,7 +9,6 @@ class Window(QWidget):
         super().__init__()
 
         self.setWindowTitle("Bisection Method")
-        self.setMaximumSize(500, 250)
 
         self.density_edit = QLineEdit()
         self.x_edit = QLineEdit()
