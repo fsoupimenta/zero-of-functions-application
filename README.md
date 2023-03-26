@@ -1,1 +1,1 @@
-# Bisection Method Application
+# Zero of Functions Application
