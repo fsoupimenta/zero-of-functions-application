@@ -1,10 +1,10 @@
 import sys
 from PyQt5.QtWidgets import QApplication
-from view.window import Window
+from view.mainwindow import MainWindow
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    window = Window()
+    window = MainWindow()
 
     window.show()
 
