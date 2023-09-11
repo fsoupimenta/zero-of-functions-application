@@ -23,7 +23,7 @@ class BisectionMethod(Method):
 
     @staticmethod
     def calculate():
-        pass
+        print('Hello')
 
 
 class SecantMethod(Method):
