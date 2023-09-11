@@ -1,5 +1,4 @@
 import math
-from time import sleep
 
 from store.store import store
 
@@ -17,13 +16,28 @@ class Method:
     def calculate():
         pass
 
+    @staticmethod
+    def image_x(x):
+        return math.log(x) + 2 - x
+
 
 class BisectionMethod(Method):
     name = "Bisection method"
 
     @staticmethod
     def calculate():
-        print('Hello')
+        interval_avg = (store.value_a + store.value_b) / 2
+        image_interval_avg = Method.image_x(interval_avg)
+        error = 10**(-3)
+        while image_interval_avg > error or image_interval_avg < -error:
+            if image_interval_avg > 0:
+                store.value_a = interval_avg
+            else:
+                store.value_b = interval_avg
+            interval_avg = (store.value_a + store.value_b) / 2
+            image_interval_avg = Method.image_x(interval_avg)
+            print(image_interval_avg)
+        print(interval_avg)
 
 
 class SecantMethod(Method):

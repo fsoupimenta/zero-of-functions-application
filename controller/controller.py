@@ -18,7 +18,7 @@ class Controller:
         self.main_window.show()
 
     def update_method_choice(self):
-        store.equation = self.main_window.equation
-        store.value_a = self.main_window.value_a
-        store.value_b = self.main_window.value_b
+        store.equation = int(self.main_window.equation.text())
+        store.value_a = int(self.main_window.value_a.text())
+        store.value_b = int(self.main_window.value_b.text())
         method_name['Bisection method'].calculate()
