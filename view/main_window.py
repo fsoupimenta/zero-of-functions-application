@@ -1,6 +1,5 @@
 from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import *
-from PyQt5.uic.properties import QtGui
 
 
 class MainWindow(QWizardPage):
@@ -53,11 +52,4 @@ class MainWindow(QWizardPage):
         self.setLayout(main_layout)
 
     def set_label_validation_equation(self, error_message):
-        if len(error_message) == 0:
-            self.equation_validation.setText("Valid equation")
-            self.equation_validation.setFont(QtGui.QFont("Arial", 8))
-            self.equation_validation.setStyleSheet("color: green")
-        else:
-            self.equation_validation.setText("Invalid Equation: " + str(error_message))
-            self.equation_validation.setFont(QtGui.QFont("Arial", 8))
-            self.equation_validation.setStyleSheet("color: red")
+        pass
