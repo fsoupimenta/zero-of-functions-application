@@ -21,4 +21,4 @@ class Controller:
         store.equation = int(self.main_window.equation.text())
         store.value_a = int(self.main_window.value_a.text())
         store.value_b = int(self.main_window.value_b.text())
-        method_name['Bisection method'].calculate()
+        method_name['Secant method'].calculate()

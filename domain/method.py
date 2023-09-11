@@ -45,7 +45,23 @@ class SecantMethod(Method):
 
     @staticmethod
     def calculate():
-        pass
+        value_c = SecantMethod.get_secant(store.value_a, store.value_b)
+        image_value_c = Method.image_x(value_c)
+        error = 10**(-3)
+        while image_value_c > error or image_value_c < -error:
+            if image_value_c < 0:
+                store.value_a = value_c
+            else:
+                store.value_b = value_c
+            value_c = SecantMethod.get_secant(store.value_a, store.value_b)
+            image_value_c = Method.image_x(value_c)
+            print(image_value_c)
+        print(value_c)
+
+    @staticmethod
+    def get_secant(value_a, value_b):
+        return (value_a * Method.image_x(value_b) - value_b * Method.image_x(value_a)) / \
+            (Method.image_x(value_b) - Method.image_x(value_a))
 
 
 class NewtonMethod(Method):
