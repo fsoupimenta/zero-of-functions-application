@@ -1,4 +1,3 @@
-import math
 import sympy as sp
 
 from store.store import store
@@ -19,7 +18,8 @@ class Method:
 
     @staticmethod
     def image_x(x):
-        return math.log(x) + 2 - x
+        equation = sp.simplify(store.equation)
+        return sp.N(equation.subs(x, equation))
 
 
 class BisectionMethod(Method):
@@ -71,7 +71,7 @@ class NewtonMethod(Method):
     @staticmethod
     def calculate():
         x = sp.symbols('x')
-        function = x**3 - 7*x**2 + sp.exp(2*x) - 40 - x
+        function = sp.simplify(store.equation)
         derivative_function = sp.diff(function, x)
         image_value_c = sp.N(function.subs(x, store.value_a))
         derivative_value_c = sp.N(derivative_function.subs(x, store.value_a))

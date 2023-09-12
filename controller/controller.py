@@ -18,7 +18,7 @@ class Controller:
         self.main_window.show()
 
     def update_method_choice(self):
-        store.equation = int(self.main_window.equation.text())
+        store.equation = self.main_window.equation.text()
         store.value_a = int(self.main_window.value_a.text())
         store.value_b = int(self.main_window.value_b.text())
         method_name['Newton method'].calculate()
