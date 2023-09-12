@@ -1,4 +1,5 @@
 import math
+import sympy as sp
 
 from store.store import store
 
@@ -69,7 +70,19 @@ class NewtonMethod(Method):
 
     @staticmethod
     def calculate():
-        pass
+        x = sp.symbols('x')
+        function = x**3 - 7*x**2 + sp.exp(2*x) - 40 - x
+        derivative_function = sp.diff(function, x)
+        image_value_c = sp.N(function.subs(x, store.value_a))
+        derivative_value_c = sp.N(derivative_function.subs(x, store.value_a))
+        value_c = store.value_a - image_value_c / derivative_value_c
+        error = 10**(-3)
+        while image_value_c > error or image_value_c < -error:
+            image_value_c = sp.N(function.subs(x, value_c))
+            derivative_value_c = sp.N(derivative_function.subs(x, value_c))
+            value_c = value_c - image_value_c / derivative_value_c
+            print(image_value_c)
+        print(value_c)
 
 
 method_ = Method()
